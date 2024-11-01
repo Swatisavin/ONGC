@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Feedback Page</title>
+  <script>
+    // Submit feedback and store it locally
+    function submitFeedback() {
+      const feedbackEmail = document.getElementById("feedbackEmail").value;
+      const feedbackText = document.getElementById("feedbackText").value;
+      const nominatedEmail = localStorage.getItem("nominatedEmail");
+
+      if (feedbackEmail === nominatedEmail) {
+        localStorage.setItem("feedback", feedbackText); // Store feedback
+        alert("Thank you for your feedback!");
+      } else {
+        alert("Email not recognized. Please use the same email you nominated with.");
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Feedback Page</h1>
+  <form>
+    Email ID: <input type="email" id="feedbackEmail" required><br><br>
+    Feedback: <textarea id="feedbackText" required></textarea><br><br>
+    <button type="button" onclick="submitFeedback()">Submit Feedback</button>
+  </form>
+</body>
+</html>
